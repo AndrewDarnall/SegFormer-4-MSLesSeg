@@ -1,4 +1,9 @@
-/data/MSLesSeg
-/data/brats2021_seg
+# Ignore everything in the /data/ directory
+/data/*
+
+# Except for the .gitkeep file
+!/data/.gitkeep
+
+# Ignore specific files/folders outside of /data/
 **/.ipynb_checkpoints
 module_design_structure.txt
