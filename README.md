@@ -12,12 +12,11 @@
 
 ## Dependencies
 
-```bash
 | Component | Version  |
 |-----------|----------|
 | `Python`  | `3.11.7` |
 | `Pip`     | `24.0`   |
-```
+
 
 ## Setup
 
