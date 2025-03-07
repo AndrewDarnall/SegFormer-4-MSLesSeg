@@ -3,7 +3,6 @@ import random
 import numpy as np
 import pandas as pd
 
-
 def create_pandas_df(data_dict: dict) -> pd.DataFrame:
     """
     create a pandas dataframe out of data dictionary
@@ -17,8 +16,7 @@ def create_pandas_df(data_dict: dict) -> pd.DataFrame:
     return data_frame
 
 
-def save_pandas_df(dataframe: pd.DataFrame, save_path: str,
-                   header: list) -> None:
+def save_pandas_df(dataframe: pd.DataFrame, save_path: str, header: list) -> None:
     """
     save a dataframe to the save_dir with specified header
     dataframe: pandas dataframe to be saved
@@ -71,8 +69,7 @@ def create_train_val_test_csv_from_data_folder(
     # shuffling idx (inplace operation)
     np.random.shuffle(idx)
 
-    # spliting the data into train/val split percentage respectively for
-    # train, val and test (test set is inferred automatically)
+    # spliting the data into train/val split percentage respectively for train, val and test (test set is inferred automatically)
     train_idx, val_idx, test_idx = np.split(
         idx,
         [
@@ -85,13 +82,14 @@ def create_train_val_test_csv_from_data_folder(
     train_sample_base_dir = np.array(data_dir)[train_idx]
     train_sample_case_name = np.array(case_name)[train_idx]
 
-    # we do not need test split so we can merge it with validation
+    # we do not need test split so we can merge it with validation 
     val_idx = np.concatenate((val_idx, test_idx), axis=0)
     validation_sample_base_dir = np.array(data_dir)[val_idx]
     validation_sample_case_name = np.array(case_name)[val_idx]
 
+
     # dictionary object to get converte to dataframe
-    train_data = {"data_path": train_dp, "label_path": train_fold_cn} # USE VERSION 2!
+    train_data = {"data_path": train_dp, "label_path": train_fold_cn}
     valid_data = {"data_path": valid_dp, "label_path": valid_fold_cn}
 
     train_df = create_pandas_df(train_data)
@@ -108,10 +106,24 @@ def create_train_val_test_csv_from_data_folder(
         header=header,
     )
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     # create a pandas data frame
     train_df = pd.DataFrame(
-        data={"base_dir": train_sample_base_dir,
-              "case_name": train_sample_case_name},
+        data={"base_dir": train_sample_base_dir, "case_name": train_sample_case_name},
         index=None,
         columns=None,
     )
@@ -135,4 +147,17 @@ def create_train_val_test_csv_from_data_folder(
         save_dir + "/validation.csv",
         header=["data_path", "case_name"],
         index=False,
+    )
+
+
+if __name__ == "__main__":
+    create_train_val_test_csv_from_data_folder(
+        # path to the raw train data folder
+        folder_dir="../train",
+        # this is inferred from where the actual experiments are run relative to the data folder
+        append_dir="../../../data/brats2021_seg/BraTS2021_Training_Data/",
+        # where to save the train, val and test csv file relative to the current directory
+        save_dir="../../",
+        train_split_perc=0.85,
+        val_split_perc=0.10,
     )

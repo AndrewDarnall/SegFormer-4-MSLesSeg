@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="segformer3dutils",
+    name="segformer3d",
     version="0.1.0",
     author="Andrew Ryan Darnall, Giovani Spadaro",
     author_email="andrew.ryan.darnall@gmail.com, giovannispada17@protonmail.com",
@@ -46,6 +46,7 @@ setup(
         "torch==2.1.0",
         "torchaudio==2.1.0",
         "torchvision==0.16.0",
+        "numpy==1.26.4"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
