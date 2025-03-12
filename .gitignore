@@ -1,8 +1,12 @@
 # Ignore everything in the /data/ directory
-/data/*
+/data/00-Compressed-Data/*
+/data/01-Raw-Data/*
+/data/02-PreProcessed-Data/*
 
 # Except for the .gitkeep file
-!/data/.gitkeep
+!/data/00-Compressed-Data/.gitkeep
+!/data/01-Raw-Data/.gitkeep
+!/data/02-PreProcessed-Data/.gitkeep
 
 # Ignore specific files/folders outside of /data/
 **/.ipynb_checkpoints
