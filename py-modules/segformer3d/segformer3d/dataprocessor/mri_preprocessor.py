@@ -517,21 +517,3 @@ class BraTs2021PreProcessor:
 
 # For additional code rarding the visualization and animation, consult the official repo 
 # --> https://github.com/OSUPCVLab/SegFormer3D/blob/main/data/brats2021_seg/brats2021_raw_data/brats2021_seg_preprocess.py
-
-if __name__ == "__main__":
-
-    import sys
-
-    if len(sys.argv) != 4:
-        print(f"usage:\t{sys.argv[0]}\t<PATH-to-root-directory>\t<Train-dir-name>\t<PATH-to-save-dir>")
-        sys.exit(-1)
-
-
-    print(f" ---- Testing the MRI PreProcessor Source File ---- ")
-    # The objects expects as input the following:
-    # 1) The PATH of the Root Directory where the data is (the train directory)
-    # 2) The NAME of Training Directory
-    # 3) The Save Directory
-    print(f" == Testing for BraTs 2017 == ")
-    brats2017 = BraTs2017PreProcessor(sys.argv[1], sys.argv[2], sys.argv[3])
-    brats2017()
